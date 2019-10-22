@@ -5,11 +5,18 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String line;
-	System.out.print("Please enter your first name, last name, and amount to withdraw: ");
-	line = in.nextLine();
-	System.out.print("Here's your output: " + line);
+        Scanner in = new Scanner(System.in); //initialize scanner named "in"
+        String line; //initialize a string named "line"
+        System.out.print("Please enter your first name, last name, and amount to withdraw: "); //Prompt for input
+        line = in.nextLine(); //the string named "line" is whatever is typed next
+        System.out.println("Here's what the input was: " + line); //printing the input as it was given
+        int firstSpace = line.indexOf(' '); //gets the location of the first space
+        System.out.print("The second space appears at character "); //telling us where the second space is found
+        System.out.println(line.indexOf(' ', firstSpace)); //prints the location of the space that happens after firstSpace
+        //do replaceAll or [\\D] break the methods rule? 
+        float money = Float.parseFloat(line.replaceAll("[\\D]", "")); //removing letters from string "line" and making the digits a float named "money"
+        System.out.print("The number as a float is " + money + " and as a dollar amount is "); //prints the new float
+        System.out.printf("%.2f", money); //makes the float show 2 decimal places
 
     }
 }
