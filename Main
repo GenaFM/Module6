@@ -1,0 +1,15 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String line;
+	System.out.print("Please enter your first name, last name, and amount to withdraw: ");
+	line = in.nextLine();
+	System.out.print("Here's your output: " + line);
+
+    }
+}
