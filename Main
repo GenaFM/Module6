@@ -19,4 +19,5 @@ public class Main {
         System.out.printf("%.2f", money); //makes the float show 2 decimal places
 
     }
+    
 }
