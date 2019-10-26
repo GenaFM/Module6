@@ -17,6 +17,7 @@ public class Main {
         float money = Float.parseFloat(line.replaceAll("[\\D]", "")); //removing letters from string "line" and making the digits a float named "money"
         System.out.print("The number as a float is " + money + " and as a dollar amount is "); //prints the new float
         System.out.printf("%.2f", money); //makes the float show 2 decimal places
+        System.out.println("Peace out, nerrrrrrrdds");
 
     }
     
