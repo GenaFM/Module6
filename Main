@@ -1,15 +1,96 @@
 package com.company;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String line;
-	System.out.print("Please enter your first name, last name, and amount to withdraw: ");
-	line = in.nextLine();
-	System.out.print("Here's your output: " + line);
+    public static void main(String[] args) throws IOException {
 
+        FileWriter fw = new FileWriter("dataOutFileTest.txt");
+        PrintWriter outputFile = new PrintWriter(fw);
+        Scanner input = new Scanner(System.in);
+
+
+        System.out.println("Please enter a positive integer: ");
+        String userInput = input.nextLine(); //What the user types is labeled userInput
+
+
+        System.out.println("The number given was " + userInput);
+        outputFile.println("The number given was " + userInput);
+
+        System.out.println(reverse(userInput));
+        outputFile.println(reverse(userInput));
+
+        System.out.println(even(userInput));
+        outputFile.println(even(userInput));
+
+        System.out.println(odd(userInput));
+        outputFile.println(odd(userInput));
+
+
+        System.out.println(validateInput(userInput));
+
+        System.out.println("Type Y to continue, or anything else to exit ");
+    }
+
+    private static boolean validateInput(String userInput) {
+        if (userInput.length() == 0) {
+            return false;
+        }
+        for (int positionNum = 0; positionNum < userInput.length(); positionNum++) {
+            if (!Character.isDigit(userInput.charAt(positionNum))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static String reverse(String userInput) {
+        String reversed = "";
+
+        for (int positionNum = userInput.length() - 1; positionNum >= 0; positionNum--) {
+            reversed = reversed + userInput.charAt(positionNum) + " ";
+        }
+        return new String("The input reversed is " + reversed);
+    }
+
+
+    public static String even(String userInput) {
+        String even = "";
+        for (int positionNum = 0; positionNum < userInput.length(); positionNum++) {
+
+            if (userInput.charAt(positionNum) % 2 == 0) {
+                even = even + userInput.charAt(positionNum) + " ";
+            }
+        }
+        if (even.length() == 2) {
+            return new String("The only even number is " + even);
+        }
+        if (even.length() >= 3) {
+            return new String("The even numbers are " + even);
+        } else return new String("There are no even numbers");
+    }
+
+
+    public static String odd(String userInput) {
+        String odd = "";
+        for (int positionNum = 0; positionNum < userInput.length(); positionNum++) {
+
+            if (userInput.charAt(positionNum) % 2 == 1) {
+                odd = odd + userInput.charAt(positionNum) + " ";
+            }
+        }
+        if (odd.length() == 2) {
+            return new String("The only odd number is " + odd);
+        }
+        if (odd.length() >= 3) {
+            return new String("The odd numbers are " + odd);
+        } else return new String("There are no odd numbers");
     }
 }
+
+
